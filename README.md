@@ -41,3 +41,6 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the AnimeFinder project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'candescent-cable-3590'/anime_finder/blob/master/CODE_OF_CONDUCT.md).
+
+#Repl.it
+[![Run on Repl.it](https://repl.it/badge/github/CatheryneS/anime_finder)](https://repl.it/github/CatheryneS/anime_finder)
