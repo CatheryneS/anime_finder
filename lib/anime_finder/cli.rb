@@ -3,6 +3,8 @@ class AnimeFinder::CLI
     puts "Let's find you an anime to watch!"
     genres
     list_genres
+    anime
+    list_of_animes
     # show catagorizes
     # ask which on they want to look into 
     # provide a list of matching anime
@@ -11,7 +13,7 @@ class AnimeFinder::CLI
   end
   
   def genres
-    #gets genres from scraper
+    #gets genres from scraper class
     @genres = ["action", "romance", "slice of life"] # test data 
   end
   
@@ -19,8 +21,13 @@ class AnimeFinder::CLI
     @genres.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
   end
   
-  def anime_list
-    
+  def anime
+    #gets animes from scraper class
+    @anime = ["Inuyasha", "Ranma 1/2", "Lovely Complex"]
+  end
+  
+  def list_of_animes
+    @anime.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
   end
   
   def summary
