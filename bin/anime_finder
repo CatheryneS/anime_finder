@@ -1,2 +1,5 @@
 #!/usr/bin/env ruby
 
+require_relative "../lib/environment"
+
+AnimeFinder::CLI.new.call
