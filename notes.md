@@ -14,3 +14,10 @@ Choosing Classes
 Using url = https://aniwatcher.com/anime-list
   need Nokogiri and open uri 
 doc.css(".genre").text = genres
+
+May have to put limit on how many animes display at one time
+
+Next need to get summaries displaying
+  Wont be in a list format, will only show the summary of the show
+  Purely scraper's job to obtain and CLI's job to display..?
+  
