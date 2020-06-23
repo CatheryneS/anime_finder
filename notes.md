@@ -11,3 +11,6 @@ Choosing Classes
   One will store the data if it has already been gotten (Anime Expert)
   One will ask Nikki what she would like to do (CLI/anime finder)
   
+Using url = https://aniwatcher.com/anime-list
+  need Nokogiri and open uri 
+doc.css(".genre").text = genres
