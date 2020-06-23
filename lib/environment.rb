@@ -1,5 +1,5 @@
 require_relative "./anime_finder/version"
-require_relative "./anime_finder/CLI"
+require_relative "./anime_finder/cli"
 
 require 'pry'
 

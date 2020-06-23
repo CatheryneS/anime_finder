@@ -1,0 +1,3 @@
+class AnimeFinder::Scraper
+  
+end
