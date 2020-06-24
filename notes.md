@@ -22,3 +22,26 @@ Next need to get summaries displaying
   Purely scraper's job to obtain and CLI's job to display..?
   
 scrape for genres and one for dsc.
+
+The AnimeExpert class needs to:
+  store data about animes that have already been scraped
+    -> anime title
+    -> summaries
+    -> number of episodes
+    -> year created 
+    
+The Scraper class needs to:
+    -> grab genres and animes belonging to them
+      -> they have separate urls for each genre(s) may have to scrape each separatly 
+          -> work on one genre page first to get everything working then add the other urls
+    -> define a method for scraping the details for each anime 
+      -> anime title
+      -> summaries
+      -> episodes
+      -> year created
+      
+Class Relationships
+  Anime belongs to many genres
+  
+use an @@all for the animes to get the list of animes? 
+  -> how to show each shows details
