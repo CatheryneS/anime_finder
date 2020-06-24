@@ -35,15 +35,13 @@ class AnimeFinder::CLI
   def list_genres
     puts "\nEnter the number of the genre you're interested in?\n"
     genres.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
-    input = gets.chomp
-    # binding.pry
+    picked_genre = gets.chomp
     
-    if input.to_i <= @genres.length
+    if picked_genre.to_i <= @genres.length && picked_genre.to_i < 0
       #list anime that belong to that genre 
-      list_of_animes  #giving the entire list 
     else
-      puts "Hhmm..I can't seem to find that. Enter a number 1-5 please."
-      input = gets.chomp 
+      puts "Hhmm..I can't seem to find that. Enter a number from the list please."
+      genre_pick = gets.chomp 
     end
       
   end
@@ -58,6 +56,11 @@ class AnimeFinder::CLI
     anime.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
     puts "Enter number of anime to list of show details."
     input = gets.chomp
+  end
+  
+  def animes_based_on_genre(picked_genre)
+    # lists the animes based on input from list_genres 
+    list = @anime[picked_genre - 1]
   end
   
   def anime_details
