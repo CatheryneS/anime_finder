@@ -11,7 +11,7 @@ Choosing Classes
   One will store the data if it has already been gotten (Anime Expert)
   One will ask Nikki what she would like to do (CLI/anime finder)
   
-Using url = https://aniwatcher.com/anime-list
+Using url = https://aniwatcher.com/anime-list or https://www.crunchyroll.com/videos/anime?utm_source=paid_cr&utm_medium=google_sem&utm_campaign=brand_sitelink&referrer=GoogleSEM&utm_source=paid_cr&utm_medium=google-ads&utm_campaign=search-conversion&utm_term=crunchyroll&referrer=paid_cr_google-ads_search-conversion&gclid=Cj0KCQjw0Mb3BRCaARIsAPSNGpVLVf0o_zIdbnZFyBijufPZF7V2PvuRd5RDFzO_uz8OF56KxFyrYl4aAoypEALw_wcB
   need Nokogiri and open uri 
 doc.css(".genre").text = genres
 
@@ -21,3 +21,4 @@ Next need to get summaries displaying
   Wont be in a list format, will only show the summary of the show
   Purely scraper's job to obtain and CLI's job to display..?
   
+scrape for genres and one for dsc.
