@@ -29,6 +29,7 @@ The AnimeExpert class needs to:
     -> summaries
     -> number of episodes
     -> year created 
+  interates a hash to output the details from the scraper class 
     
 The Scraper class needs to:
     -> grab genres and animes belonging to them
@@ -41,7 +42,7 @@ The Scraper class needs to:
       -> year created
       
 Class Relationships
-  Anime belongs to many genres
+  Anime has many genres
   
 use an @@all for the animes to get the list of animes? 
   -> how to show each shows details
