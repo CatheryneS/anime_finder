@@ -55,12 +55,14 @@ class AnimeFinder::CLI
   
   def list_of_animes
     puts "\n\n"
-    anime.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
+    anime.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
     puts "Enter number of anime to list of show details."
     input = gets.chomp
   end
   
-  def summary
-    #displays the description of the show
+  def anime_details
+    #displays the description, title, genre, episodes, year
+    #getting from AnimeExpert class
+    AnimeFinder::AnimeExpert.new 
   end
 end

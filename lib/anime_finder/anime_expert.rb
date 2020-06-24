@@ -1,5 +1,5 @@
 class AnimeFinder::AnimeExpert
-  attr_accessor :genres, :anime, :summary 
+  attr_accessor :title, :genre, :episodes, :summary, :year  
   
   def intialize(anime_hash)
     anime_hash.each do |key, value|
@@ -11,6 +11,7 @@ class AnimeFinder::AnimeExpert
   def save
     @@all.push(self)
   end
+  
   
   #show anime lists
   #tell summaries
