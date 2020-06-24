@@ -1,22 +1,18 @@
 class AnimeFinder::CLI 
   
   def call
+    puts "\nLet's find you an anime to watch!\n"
+    menu
+  end
+  
+  def menu
     input = ""
     
     until input == "exit"
-    puts "\nLet's find you an anime to watch!\n"
     puts "\nTo search by genre, enter 'genres'.\n"
-    puts "To start with a list of animes, enter 'animes'."
+    puts "To show a list of animes, enter 'animes'."
     puts "Type 'exit' to abandon me."
     input = gets.chomp
-    
-    # list_genres
-    # list_of_animes
-    # show catagorizes
-    # ask which on they want to look into 
-    # provide a list of matching anime
-    # user picks an anime 
-    # anime summary is given
     
     case input
       when "genres"
@@ -44,6 +40,7 @@ class AnimeFinder::CLI
     
     if input.to_i <= @genres.length
       #list anime that belong to that genre 
+      list_of_animes  #giving the entire list 
     else
       puts "Hhmm..I can't seem to find that. Enter a number 1-5 please."
       input = gets.chomp 
@@ -57,7 +54,10 @@ class AnimeFinder::CLI
   end
   
   def list_of_animes
+    puts "\n\n"
     anime.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
+    puts "Enter number of anime to list of show details."
+    input = gets.chomp
   end
   
   def summary
