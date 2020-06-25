@@ -22,18 +22,20 @@ class AnimeFinder::CLI
       when "exit"
         puts "Enjoy your binge watching! See you in 72 hours."
       else 
-        puts "\nI don't get it. Please try again.\n"
+        puts "\nMaster-sama, I don't know that action. Please try again.\n"
       end
     end
   end
   
   def genres
+    AnimeFinder::GenreExpert.new("action")
+    AnimeFinder::GenreExpert.new("slice of life")
     @genres = AnimeFinder::GenreExpert.all
   end
   
   def list_genres
     puts "\nEnter the number of the genre you're interested in?\n"
-    genres.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
+    genres.each.with_index(1) {|g, i| puts "#{i}. #{g.name}"}
     selection
   end
   
@@ -52,12 +54,13 @@ class AnimeFinder::CLI
   end
   
   def animes
+    
     @animes = AnimeFinder::AnimeExpert.all
   end
   
   def list_of_animes
     puts "\n\n"
-    animes.all.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
+    animes.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
     puts "Enter number of anime to list of show details."
     input = gets.chomp
   end
@@ -66,16 +69,17 @@ class AnimeFinder::CLI
     # lists the animes based on input from list_genres 
     
     list = animes[selection.to_i - 1]
-    list.each.with_index(1) do |anime, i|
-      puts "#{i}. #{anime}"
-    end
+    # list.each.with_index(1) do |anime, i|
+    #   puts "#{i}. #{anime}"
+    # end
     puts "\nEnter the number for the anime you want to know more:\n"
+    
   end
   
   def anime_details
     #displays the description, title, genre, episodes, year
     #getting from AnimeExpert class
     #needs to know anime based on user input of a number / how to get it to be based off name
-    AnimeFinder::AnimeExpert.new 
+    puts "Trying to load details"
   end
 end

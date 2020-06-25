@@ -1,15 +1,15 @@
 class AnimeFinder::GenreExpert
-  attr_accessor :genre, :anime
-  @@all = ["action", "romance", "slice of life", "comdey", "drama"]
+  attr_accessor :name, :anime
+  @@all = []
   
-  # def initialize(genre)
-  #   @genre = genre 
-  #   save
-  # end
+  def initialize(name)
+    @name = name
+    save
+  end
   
-  # def save
-  #   @@all << self
-  # end
+  def save
+    @@all << self
+  end
   
   def self.all 
     # AnimeFinder::Scraper.scrape_genre_list if @@all.empty?
