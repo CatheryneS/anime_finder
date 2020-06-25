@@ -19,7 +19,6 @@ class AnimeFinder::AnimeExpert
   end
   
   def add_genre(genre)
-    @genres << genre
     genre.anime = self 
   end
   
