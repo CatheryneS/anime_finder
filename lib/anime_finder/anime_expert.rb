@@ -1,11 +1,12 @@
 class AnimeFinder::AnimeExpert
-  attr_accessor :name, :genre, :episodes, :summary, :year  
+  attr_accessor :title, :genre, :episodes, :summary, :year  
   @@all = []
   
-  def initialize(anime_hash)
-    anime_hash.each do |key, value|
-      self.send(("#{key}="), value)
-    end
+  def initialize(title)
+    # anime_hash.each do |key, value|
+    #   self.send(("#{key}="), value)
+    # end
+    @title = title
     @genres = []
     save
   end
