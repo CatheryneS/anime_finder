@@ -28,13 +28,12 @@ class AnimeFinder::CLI
   end
   
   def genres
-    #gets genres from scraper class
     @genres = AnimeFinder::GenreExpert.all
   end
   
   def list_genres
     puts "\nEnter the number of the genre you're interested in?\n"
-    genres.each.with_index(1) {|g, i| puts "0#{i}. #{g}"}
+    genres.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
     selection
   end
   
@@ -49,19 +48,16 @@ class AnimeFinder::CLI
   end
   
   def input_check(selection)
-     selection.to_i - 1 <= AnimeFinder::GenreExpert.all.length 
-    # & selection >= 0
-    # binding.pry 
+     selection.to_i <= genres.length && selection.to_i > 0
   end
   
-  # def anime
-  #   #gets animes from scraper class
-  #   @anime
-  # end
+  def animes
+    @animes = AnimeFinder::AnimeExpert.all
+  end
   
   def list_of_animes
     puts "\n\n"
-    AnimeFinder::AnimeExpert.all.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
+    animes.all.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
     puts "Enter number of anime to list of show details."
     input = gets.chomp
   end
@@ -69,7 +65,7 @@ class AnimeFinder::CLI
   def animes_based_on_genre(selection)
     # lists the animes based on input from list_genres 
     
-    list = @anime[selection - 1]
+    list = animes[selection.to_i - 1]
     list.each.with_index(1) do |anime, i|
       puts "#{i}. #{anime}"
     end
