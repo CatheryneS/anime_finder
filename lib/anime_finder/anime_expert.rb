@@ -25,6 +25,6 @@ class AnimeFinder::AnimeExpert
   
   def genre 
     #returns genres the anime belongs to 
-    GenreExpert.all.select {|genre| genre.anime == self}
+    AnimeFinder::GenreExpert.all.select {|genre| genre.anime == self}
   end
 end

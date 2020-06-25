@@ -1,6 +1,6 @@
 class AnimeFinder::GenreExpert
   attr_accessor :genre, :anime
-  @@all = ["action", "romance", "slice of life"]
+  @@all = ["action", "romance", "slice of life", "comdey", "drama"]
   
   # def initialize(genre)
   #   @genre = genre 
@@ -22,7 +22,7 @@ class AnimeFinder::GenreExpert
   
   # def anime
   #   #returns animes that belong to the genre
-  #   AnimeExpert.all.select {|anime| anime.genre ==self}
+  # AnimeFinder::AnimeExpert.all.select {|anime| anime.genre ==self}
   # end
   
   # will know everything about genres 
