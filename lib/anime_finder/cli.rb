@@ -29,16 +29,17 @@ class AnimeFinder::CLI
   
   def genres
     #gets genres from scraper class
-    @genres = ["action", "romance", "slice of life"] # test data 
+    @genres
   end
   
   def list_genres
     puts "\nEnter the number of the genre you're interested in?\n"
-    genres.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
-    picked_genre = gets.chomp
+    AnimeFinder::GenreExpert.all.each.with_index(1) {|g, i| puts "#{i}. #{g}"}
+    selection = gets.chomp.to_i
     
-    if picked_genre.to_i <= @genres.length && picked_genre.to_i < 0
-      #list anime that belong to that genre 
+    if selection - 1 <= AnimeFinder::GenreExpert.all.length && selection >= 0
+      #list anime that belong to that genre
+      animes_based_on_genre(selection)
     else
       puts "Hhmm..I can't seem to find that. Enter a number from the list please."
       genre_pick = gets.chomp 
@@ -60,12 +61,18 @@ class AnimeFinder::CLI
   
   def animes_based_on_genre(picked_genre)
     # lists the animes based on input from list_genres 
-    list = @anime[picked_genre - 1]
+    
+    list = @anime[selection - 1]
+    list.each.with_index(1) do |anime, i|
+      puts "#{i}. #{anime}"
+    end
+    puts "\nEnter the number for the anime you want to know more:\n"
   end
   
   def anime_details
     #displays the description, title, genre, episodes, year
     #getting from AnimeExpert class
+    #needs to know anime based on user input of a number / how to get it to be based off name
     AnimeFinder::AnimeExpert.new 
   end
 end
