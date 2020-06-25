@@ -49,12 +49,12 @@ class AnimeFinder::CLI
   
   def anime
     #gets animes from scraper class
-    @anime = ["Inuyasha", "Ranma 1/2", "Lovely Complex"]
+    @anime
   end
   
   def list_of_animes
     puts "\n\n"
-    anime.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
+    AnimeFinder::AnimeExpert.all.each.with_index(1) {|title, i| puts "#{i}. #{title}"}
     puts "Enter number of anime to list of show details."
     input = gets.chomp
   end

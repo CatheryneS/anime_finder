@@ -1,6 +1,6 @@
 class AnimeFinder::AnimeExpert
   attr_accessor :name, :genre, :episodes, :summary, :year  
-  @@all = []
+  @@all = ["Inuyasha", "Ranma 1/2", "Lovely Complex"]
   
   def initialize(anime_hash)
     anime_hash.each do |key, value|
@@ -14,7 +14,8 @@ class AnimeFinder::AnimeExpert
     @@all.push(self)
   end
   
-  def self.all 
+  def self.all
+    # AnimeFinder::Scraper
     @@all
   end
   
