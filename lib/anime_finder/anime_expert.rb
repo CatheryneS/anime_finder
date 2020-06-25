@@ -1,10 +1,12 @@
 class AnimeFinder::AnimeExpert
-  attr_accessor :title, :genre, :episodes, :summary, :year  
+  attr_accessor :name, :genre, :episodes, :summary, :year  
+  @@all = []
   
-  def intialize(anime_hash)
+  def initialize(anime_hash)
     anime_hash.each do |key, value|
       self.send(("#{key}="), value)
     end
+    @genres = []
     save
   end
   
@@ -12,7 +14,17 @@ class AnimeFinder::AnimeExpert
     @@all.push(self)
   end
   
+  def self.all 
+    @@all
+  end
   
-  #show anime lists
-  #tell summaries
+  def add_genre(genre)
+    @genres << genre
+    genre.anime = self 
+  end
+  
+  def genre 
+    #returns genres the anime belongs to 
+    GenreExpert.all.select {|genre| genre.anime == self}
+  end
 end
