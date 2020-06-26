@@ -1,13 +1,14 @@
 class AnimeFinder::Anime
-  attr_accessor :title, :genre, :episodes, :summary, :year  
+  attr_accessor :title, :genres, :episodes, :summary, :year  
   @@all = []
   
-  def initialize(title)
-    # anime_hash.each do |key, value|
-    #   self.send(("#{key}="), value)
-    # end
-    @title = title
-    @genres = []
+  def initialize(anime_hash)
+    anime_hash.each do |key, value|
+      self.send(("#{key}="), value)
+    end
+    
+    # @title = title
+    # @genres = []
     save
   end
   

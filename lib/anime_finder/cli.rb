@@ -18,7 +18,7 @@ class AnimeFinder::CLI
       when "genres"
         list_genres
       when "animes"
-        animes
+        all_animes
       when "exit"
         puts "Enjoy your binge watching! See you in 72 hours."
       else 
@@ -28,6 +28,7 @@ class AnimeFinder::CLI
   end
   
   def genres
+    # binding.pry
     @genres = AnimeFinder::Genre.all
   end
   
@@ -53,22 +54,21 @@ class AnimeFinder::CLI
   
   def animes
     @animes = AnimeFinder::Anime.all
-    puts "\nEnter number of anime to list of show details.\n"
-    @animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
-    
   end
   
-  def list_of_animes
-    puts "\n\n"
+  def all_animes
+    # @animes = AnimeFinder::Anime.all
+    puts "\nEnter number of anime to list of show details.\n"
     animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
-    puts "Enter number of anime to list of show details."
     input = gets.chomp
   end
   
+  
   def animes_based_on_genre(selection)
     # lists the animes based on input from list_genres 
-    
-    list = animes[selection.to_i - 1]
+    binding.pry
+    list = @animes[selection.to_i - 1]
+    AnimeFinder::Genre.anime
     # list.each.with_index(1) do |anime, i|
     #   puts "#{i}. #{anime}"
     # end
