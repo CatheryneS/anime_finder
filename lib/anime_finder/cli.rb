@@ -28,9 +28,7 @@ class AnimeFinder::CLI
   end
   
   def genres
-    AnimeFinder::GenreExpert.new("action")
-    AnimeFinder::GenreExpert.new("slice of life")
-    @genres = AnimeFinder::GenreExpert.all
+    @genres = AnimeFinder::Genre.all
   end
   
   def list_genres
