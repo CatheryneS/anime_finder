@@ -13,6 +13,11 @@ class AnimeFinder::Scraper
     AnimeFinder::Genre.new("slice of life")
   end
   
+  def self.get_anime_list
+    AnimeFinder::Anime.new("Inuyasha")
+    AnimeFinder::Anime.new("Ranma 1/2")  
+  end
+  
   def scrape_info_page
     # scrapes for anime details (title, genre, episodes, year)
     #create a hash for each new anime
