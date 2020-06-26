@@ -18,7 +18,7 @@ class AnimeFinder::CLI
       when "genres"
         list_genres
       when "animes"
-        list_of_animes
+        animes
       when "exit"
         puts "Enjoy your binge watching! See you in 72 hours."
       else 
@@ -52,9 +52,10 @@ class AnimeFinder::CLI
   end
   
   def animes
-    AnimeFinder::AnimeExpert.new("Inuyasha")
-    AnimeFinder::AnimeExpert.new("Ranma 1/2")
-    @animes = AnimeFinder::AnimeExpert.all
+    @animes = AnimeFinder::Anime.all
+    puts "\nEnter number of anime to list of show details.\n"
+    @animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
+    
   end
   
   def list_of_animes
