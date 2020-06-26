@@ -1,14 +1,16 @@
 class AnimeFinder::Scraper
   
   def self.scrape_genre_list 
-    #scrapes for an array of genres
-    # iterate through genre array to make list of genres with numbers? Here or AnimeExpert
     genre_url = "https://aniwatcher.com/anime-list"
     
     page = Nokogiri::HTML(open(genre_url))
-    genres = page.css("#genrecheck").text.strip
-    binding.pry
-    genres.split(/   /) #returns an array 
+    genres = page.css("div.genre").text.strip.split(/   /)
+  
+    genres.each do |g| 
+      name = g
+      AnimeFinder::Genre.new(name)
+    end
+    
   end
   
   def self.get_anime_list
