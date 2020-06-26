@@ -1,4 +1,4 @@
-class AnimeFinder::GenreExpert
+class AnimeFinder::Genre
   attr_accessor :name, :anime
   @@all = []
   
@@ -12,7 +12,7 @@ class AnimeFinder::GenreExpert
   end
   
   def self.all 
-    # AnimeFinder::Scraper.scrape_genre_list if @@all.empty?
+    AnimeFinder::Scraper.scrape_genre_list if @@all.empty?
     @@all 
   end
   
