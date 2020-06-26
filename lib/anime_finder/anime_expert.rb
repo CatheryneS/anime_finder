@@ -1,4 +1,4 @@
-class AnimeFinder::AnimeExpert
+class AnimeFinder::Anime
   attr_accessor :title, :genre, :episodes, :summary, :year  
   @@all = []
   
