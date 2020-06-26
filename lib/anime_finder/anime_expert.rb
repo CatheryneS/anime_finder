@@ -16,7 +16,7 @@ class AnimeFinder::Anime
   end
   
   def self.all
-    # AnimeFinder::Scraper
+    AnimeFinder::Scraper.get_anime_list if @@all.empty?
     @@all
   end
   
@@ -26,6 +26,6 @@ class AnimeFinder::Anime
   
   def genre 
     #returns genres the anime belongs to 
-    AnimeFinder::GenreExpert.all.select {|genre| genre.anime == self}
+    AnimeFinder::Genre.all.select {|genre| genre.anime == self}
   end
 end
