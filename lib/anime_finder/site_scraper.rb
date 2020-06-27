@@ -23,16 +23,28 @@ class AnimeFinder::Scraper
     links = []
     
     urls.each do |link|
-      url = "https://aniwatcher.com/series/" + link
+      url = "https://aniwatcher.com" + link
       links << url
     end
     scrape_info_page(links)
   end
   
-  def scrape_info_page(links)
+  def self.scrape_info_page(links)
     # scrapes for anime details (title, genre, episodes, year)
     #create a hash for each new anime
     
+    page = Nokogiri::HTML(open(links.to_s))
+    details = page.css('#series')
     
+    details.each do |detail|
+      binding.pry
+      genres = detail.search('a').map(&:text)
+      
+    end
+      
+      
+      
+      
+      
   end
 end
