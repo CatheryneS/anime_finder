@@ -14,11 +14,16 @@ class AnimeFinder::Scraper
   end
   
   def self.get_anime_list
+     genre_url = "https://aniwatcher.com/anime-list"
     
+    page = Nokogiri::HTML(open(genre_url))
+    binding.pry
+    hyperlinks = page.css('div.column').children.css('li').css('a').attribute('href').value
   end
   
   def scrape_info_page
     # scrapes for anime details (title, genre, episodes, year)
     #create a hash for each new anime
+    
   end
 end
