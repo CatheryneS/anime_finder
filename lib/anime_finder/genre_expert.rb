@@ -1,9 +1,10 @@
 class AnimeFinder::Genre
-  attr_accessor :name, :anime
+  attr_accessor :name, :url
   @@all = []
   
-  def initialize(name)
+  def initialize(name, url)
     @name = name
+    @url = url
     save
   end
   
@@ -13,7 +14,7 @@ class AnimeFinder::Genre
   
   def self.all 
     # binding.pry
-    AnimeFinder::Scraper.scrape_genre_list if @@all.empty?
+    # AnimeFinder::Scraper.scrape_genre_list if @@all.empty?
     @@all
   end
   
@@ -21,10 +22,10 @@ class AnimeFinder::Genre
   #   anime.genre = self
   # end
   
-  def anime
-    #returns animes that belong to the genre
-    AnimeFinder::AnimeExpert.all.select {|anime| anime.genre ==self}
-  end
+  # def anime
+  #   #returns animes that belong to the genre
+  #   # AnimeFinder::AnimeExpert.all.select {|anime| anime.genre ==self}
+  # end
   
   # will know everything about genres 
   # has a 'has many' relationship with AnimeExpert (anime has many genres)

@@ -29,10 +29,12 @@ class AnimeFinder::CLI
   
   def genres
     # binding.pry
-    @genres = AnimeFinder::Genre.all
+    url = "https://www.animefreak.tv/home/genres"
+    @genres = AnimeFinder::Scraper.scrape_genre_list(url)
   end
   
   def list_genres
+    
     puts "\nEnter the number of the genre you're interested in?\n"
     genres.each.with_index(1) {|g, i| puts "#{i}. #{g.name}"}
     selection
