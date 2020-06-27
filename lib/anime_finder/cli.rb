@@ -34,10 +34,10 @@ class AnimeFinder::CLI
   def list_genres
     puts "\nEnter the number of the genre you're interested in?\n"
     genres.each.with_index(1) {|g, i| puts "#{i}. #{g.name}"}
-    selection
+    genre_selection
   end
   
-  def selection
+  def genre_selection
     selection = gets.strip
     if input_check(selection) == true 
       animes_based_on_genre(selection)
@@ -48,7 +48,7 @@ class AnimeFinder::CLI
   end
   
   def input_check(selection)
-     selection.to_i <= genres.length && selection.to_i > 0
+     selection.to_i <= (genres.length || animes.length) && selection.to_i > 0
   end
   
   def animes
@@ -63,19 +63,31 @@ class AnimeFinder::CLI
   end
   
   
-  def animes_based_on_genre(selection)
+  def animes_based_on_genre(input)
     # lists the animes based on input from list_genres 
-    genre = @genres[selection.to_i - 1]
+    genre = @genres[input.to_i - 1]
+    
     AnimeFinder::Scraper.scrape_animes(genre)
+    
     animes.each.with_index(1) do |anime, i|
       puts "#{i}. #{anime.title}"
     end
-    # binding.pry
-    puts "\nEnter the number for the anime you want to know more:\n"
     
+    puts "\nEnter the number for the anime you want to know more:\n"
+    anime_selection
   end
   
-  def anime_details
+  def anime_selection
+    selection = gets.strip
+    if input_check(selection) == true 
+      anime_details(selection)
+    else
+      puts "Hhmm..I can't seem to find that. Enter a number from the list please."
+      animes_based_on_genre
+    end
+  end
+  
+  def anime_details(input)
     #displays the description, title, genre, episodes, year
     #getting from AnimeExpert class
     #needs to know anime based on user input of a number / how to get it to be based off name
