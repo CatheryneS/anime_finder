@@ -13,8 +13,8 @@ class AnimeFinder::Genre
   end
   
   def self.all 
-    # binding.pry
-    # AnimeFinder::Scraper.scrape_genre_list if @@all.empty?
+    url = "https://www.animefreak.tv/home/genres"
+    AnimeFinder::Scraper.scrape_genre_list(url) if @@all.empty?
     @@all
   end
   

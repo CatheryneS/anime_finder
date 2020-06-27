@@ -12,7 +12,7 @@ class AnimeFinder::CLI
     puts "\nTo search by genre, enter 'genres'.\n"
     puts "To show a list of animes, enter 'animes'."
     puts "Type 'exit' to abandon me."
-    input = gets.chomp
+    input = gets.strip.downcase
     
     case input
       when "genres"
@@ -28,9 +28,7 @@ class AnimeFinder::CLI
   end
   
   def genres
-    # binding.pry
-    url = "https://www.animefreak.tv/home/genres"
-    @genres = AnimeFinder::Scraper.scrape_genre_list(url)
+    @genres = AnimeFinder::Genre.all
   end
   
   def list_genres
@@ -41,11 +39,11 @@ class AnimeFinder::CLI
   end
   
   def selection
-    selection = gets.chomp
+    selection = gets.strip
     if input_check(selection) == true 
       animes_based_on_genre(selection)
     else
-      puts "Hhmm..I can't seem to find that. Enter a number from the list please."
+      puts "Hhmm..I can't seem to find that.bin Enter a number from the list please."
       list_genres
     end
   end
@@ -62,15 +60,14 @@ class AnimeFinder::CLI
     # @animes = AnimeFinder::Anime.all
     puts "\nEnter number of anime to list of show details.\n"
     animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
-    input = gets.chomp
+    input = gets.strip
   end
   
   
   def animes_based_on_genre(selection)
     # lists the animes based on input from list_genres 
-    binding.pry
-    list = @animes[selection.to_i - 1]
-    AnimeFinder::Genre.anime
+    genre = @genres[selection.to_i - 1]
+    AnimeFinder::Scraper.scrape_details(genre)
     # list.each.with_index(1) do |anime, i|
     #   puts "#{i}. #{anime}"
     # end

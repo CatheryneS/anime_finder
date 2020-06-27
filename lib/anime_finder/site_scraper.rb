@@ -44,6 +44,8 @@ class AnimeFinder::Scraper
   #   @anime
   # end
   
-  
+  def self.scrape_details(genre)
+    puts "You made it Cat!"
+  end
   
 end
