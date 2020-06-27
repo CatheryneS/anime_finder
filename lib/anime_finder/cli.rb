@@ -32,7 +32,6 @@ class AnimeFinder::CLI
   end
   
   def list_genres
-    
     puts "\nEnter the number of the genre you're interested in?\n"
     genres.each.with_index(1) {|g, i| puts "#{i}. #{g.name}"}
     selection
@@ -67,10 +66,11 @@ class AnimeFinder::CLI
   def animes_based_on_genre(selection)
     # lists the animes based on input from list_genres 
     genre = @genres[selection.to_i - 1]
-    AnimeFinder::Scraper.scrape_details(genre)
-    # list.each.with_index(1) do |anime, i|
-    #   puts "#{i}. #{anime}"
-    # end
+    AnimeFinder::Scraper.scrape_animes(genre)
+    animes.each.with_index(1) do |anime, i|
+      puts "#{i}. #{anime.title}"
+    end
+    # binding.pry
     puts "\nEnter the number for the anime you want to know more:\n"
     
   end

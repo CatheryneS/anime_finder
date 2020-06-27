@@ -44,8 +44,16 @@ class AnimeFinder::Scraper
   #   @anime
   # end
   
-  def self.scrape_details(genre)
-    puts "You made it Cat!"
+  def self.scrape_animes(genre)
+    page = Nokogiri::HTML(open(genre.url))
+    # binding.pry
+    animes = page.css('.blb-title')
+    
+    animes.map do |link|
+      title = link.text 
+      url = link.attribute('href').value
+      AnimeFinder::Anime.new(title, url)
+    end
   end
   
 end
