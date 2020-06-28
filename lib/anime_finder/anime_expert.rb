@@ -1,15 +1,14 @@
 class AnimeFinder::Anime
-  attr_accessor :title, :genres, :episodes, :synopsis, :year, :url
+  attr_accessor :genre, :synopsis
+  attr_accessor :title, :genre_url, :detail_page
   @@all = []
   
-  def initialize(title, url)
-    # anime_hash.each do |key, value|
-    #   self.send(("#{key}="), value)
-    # end
-    
+  def initialize(title, genre_url, detail_page)
     @title = title
-    @url = url
-    # @genres = []
+    @genre_url = genre_url
+    @detail_page = detail_page
+    @synopsis = synopsis
+    @genre = genre
     save
   end
   
@@ -22,12 +21,12 @@ class AnimeFinder::Anime
     @@all
   end
   
-  def add_genre(genre)
-    genre.anime = self 
-  end
+  # def add_genre(genre)
+  #   genre.anime = self 
+  # end
   
-  def genre 
-    #returns genres the anime belongs to 
-    AnimeFinder::Genre.all.select {|genre| genre.anime == self}
-  end
+  # def genre 
+  #   #returns genres the anime belongs to 
+  #   AnimeFinder::Genre.all.select {|genre| genre.anime == self}
+  # end
 end

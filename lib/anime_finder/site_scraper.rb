@@ -50,27 +50,31 @@ class AnimeFinder::Scraper
     
     animes.map do |link|
       title = link.text 
-      url = link.attribute('href').value
-      AnimeFinder::Anime.new(title, url)
+      detail_page = link.attribute('href').value
+      AnimeFinder::Anime.new(title, genre.url, detail_page)
     end
   end
   
   def self.get_details(anime)
-    page = Nokogiri::HTML(open(anime.url))
+    page = Nokogiri::HTML(open(anime.detail_page))
     details = page.css('div.animeDetail-top')
     
     details.collect do |detail|
       binding.pry
-      summary = detail.css('p.anime-details').text.strip
-      genres = detail.css('div:nth-child(2) > a').text
+  
+      synopsis = detail.css('p.anime-details').text.strip
+      # genres = detail.css('div:nth-child(2) > a').map(&:text)
+      # title = anime.title
+      # detail_page = anime.detail_page
       
+      AnimeFinder::Anime.add
+      binding.pry
+      
+      
+      anime.anime << anime_info
+      binding.pry
     end
 
-    # binding.pry
-    # details.map do |detail|
-    #   # genres = detail.text
-    # # binding.pry
-    # end
   end
   
 end

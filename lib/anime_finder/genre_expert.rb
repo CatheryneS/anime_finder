@@ -1,6 +1,6 @@
 class AnimeFinder::Genre
-  attr_accessor :name, :url 
-  attr_reader :anime 
+  attr_accessor :name
+  attr_reader :anime, :url 
   @@all = []
   
   def initialize(name, url)
@@ -19,9 +19,9 @@ class AnimeFinder::Genre
     @@all
   end
   
-  # def add_anime(anime)
-  #   anime.genre = self
-  # end
+  def add_anime_title
+    anime.genre = self
+  end
   
   # def anime
   #   #returns animes that belong to the genre
