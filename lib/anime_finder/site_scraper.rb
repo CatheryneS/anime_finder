@@ -46,7 +46,6 @@ class AnimeFinder::Scraper
   
   def self.scrape_animes(genre)
     page = Nokogiri::HTML(open(genre.url))
-    # binding.pry
     animes = page.css('.blb-title')
     
     animes.map do |link|
@@ -54,6 +53,24 @@ class AnimeFinder::Scraper
       url = link.attribute('href').value
       AnimeFinder::Anime.new(title, url)
     end
+  end
+  
+  def self.get_details(anime)
+    page = Nokogiri::HTML(open(anime.url))
+    details = page.css('div.animeDetail-top')
+    
+    details.collect do |detail|
+      binding.pry
+      summary = detail.css('p.anime-details').text.strip
+      genres = detail.css('div:nth-child(2) > a').text
+      
+    end
+
+    # binding.pry
+    # details.map do |detail|
+    #   # genres = detail.text
+    # # binding.pry
+    # end
   end
   
 end

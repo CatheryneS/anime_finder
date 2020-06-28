@@ -1,5 +1,6 @@
 class AnimeFinder::Genre
-  attr_accessor :name, :url
+  attr_accessor :name, :url 
+  attr_reader :anime 
   @@all = []
   
   def initialize(name, url)

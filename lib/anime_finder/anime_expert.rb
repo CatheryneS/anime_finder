@@ -1,8 +1,8 @@
 class AnimeFinder::Anime
-  attr_accessor :title, :genres, :episodes, :summary, :year  
+  attr_accessor :title, :genres, :episodes, :synopsis, :year, :url
   @@all = []
   
-  def initialize(title, url = nil)
+  def initialize(title, url)
     # anime_hash.each do |key, value|
     #   self.send(("#{key}="), value)
     # end
