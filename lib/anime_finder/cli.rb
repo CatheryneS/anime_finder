@@ -19,7 +19,6 @@ class AnimeFinder::CLI
         list_genres
       when "animes"
         all_animes
-        menu
       when "exit"
         puts "Enjoy your binge watching! See you in 72 hours."
       else 
@@ -42,7 +41,6 @@ class AnimeFinder::CLI
     selection = gets.strip
     if input_check(selection) == true 
       animes_based_on_genre(selection)
-      @trigger = selection
     else
       list_genres
       puts "Hhmm..I can't seem to find that.Enter a number from the list please."
@@ -58,8 +56,12 @@ class AnimeFinder::CLI
   end
   
   def all_animes
+    if animes.empty?
+      puts "\nNo viewing history.\n"
+    else
       puts "\nPerviously viewed titles.\n"
       animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
+    end
   end
   
   def animes_based_on_genre(input)
@@ -79,36 +81,13 @@ class AnimeFinder::CLI
   def anime_selection
     selection = gets.strip
     if selection.to_i <= AnimeFinder::Links.all.length && selection.to_i > 0
-      @remember = anime_details(selection)
+      anime_details(selection)
     else
-      animes_based_on_genre(@trigger)
+      puts "I don't that number. Enter a number from the list."
+      anime_selection
     end
   end
   
-  def return_menu
-    input = ""
-    
-    until input == "exit"
-    puts "\nReturn to anime list, enter 'back'.\n"
-    puts "To show the titles of animes you've searched already, enter 'animes'."
-    puts "To search a new genre, enter 'genre'."
-    puts "Type 'exit' to abandon me."
-    input = gets.strip.downcase
-    
-    case input
-      when "genres"
-        list_genres
-      when "animes"
-        all_animes
-      when "back"
-        animes_based_on_genre(@remember)
-      when "exit"
-        menu
-      else 
-        puts "\nMaster-sama, I don't know that action. Please try again.\n"
-      end
-    end
-  end
   
   def anime_details(input)
     anime = AnimeFinder::Links.all[input.to_i - 1]
@@ -120,6 +99,5 @@ class AnimeFinder::CLI
       puts "Synopsis: #{d.synopsis}"
       puts "To watch: #{d.detail_page}"
     end
-    return_menu
   end
 end
