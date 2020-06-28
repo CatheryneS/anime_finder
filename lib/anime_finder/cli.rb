@@ -5,6 +5,17 @@ class AnimeFinder::CLI
     menu
   end
   
+  def exit_plan
+    puts "\nType 'exit' to leave.\n" 
+    input = gets.strip.downcase
+    if input == 'exit'
+      menu
+    else
+      puts "\nI cannot let you leave. Try a different answer.\n"
+      exit_plan
+    end
+  end
+  
   def menu
     input = ""
     
@@ -43,7 +54,7 @@ class AnimeFinder::CLI
       animes_based_on_genre(selection)
     else
       list_genres
-      puts "Hhmm..I can't seem to find that.bin Enter a number from the list please."
+      puts "Hhmm..I can't seem to find that.Enter a number from the list please."
     end
   end
   
@@ -56,10 +67,14 @@ class AnimeFinder::CLI
   end
   
   def all_animes
-    puts "\nPerviously viewed titles.\n"
-    animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
-    input = gets.strip
-      
+    if @animes == nil
+      puts "Please go search the anime list."
+      menu
+    else
+      puts "\nPerviously viewed titles.\n"
+      animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
+      exit_plan
+    end
   end
   
   def links
@@ -102,9 +117,10 @@ class AnimeFinder::CLI
     details.each do |d| 
       # binding.pry
       puts "Title: #{d.title}"
-      puts "Genres: #{d.genre}"
+      puts "Genres/Season: #{d.genre}"
       puts "Synopsis: #{d.synopsis}"
       puts "To watch: #{d.detail_page}"
     end
+    menu
   end
 end

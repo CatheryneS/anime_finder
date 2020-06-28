@@ -15,7 +15,6 @@ class AnimeFinder::Anime
   end
   
   def self.all
-    AnimeFinder::Scraper.get_anime_list if @@all.empty?
     @@all
   end
   
