@@ -24,7 +24,7 @@ Or install it yourself as:
 Select a genre from an outputed list.
 A list of related animes will be listed.
 Select an anime to display more details.
-Start over with a new genre or go back to the anime list.
+Start over with a new genre.
 At the end you see all of the Anime you have viewed more details about by typing 'anime'.
 
 ## Development
