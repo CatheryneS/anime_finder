@@ -51,7 +51,7 @@ class AnimeFinder::Scraper
     animes.map do |link|
       title = link.text 
       detail_page = link.attribute('href').value
-      AnimeFinder::Anime.new(title, genre.url, detail_page)
+      AnimeFinder::Links.new(title, genre.url, detail_page)
     end
   end
   

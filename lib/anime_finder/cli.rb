@@ -62,14 +62,18 @@ class AnimeFinder::CLI
     input = gets.strip
   end
   
+  def links
+    
+  end
   
   def animes_based_on_genre(input)
     # lists the animes based on input from list_genres 
-    genre = @genres[input.to_i - 1]
-    
-    AnimeFinder::Scraper.scrape_animes(genre)
-    
-    animes.each.with_index(1) do |anime, i|
+    # binding.pry
+    genre = genres[input.to_i - 1]
+    # binding.pry
+    list = AnimeFinder::Scraper.scrape_animes(genre)
+    # binding.pry
+    list.each.with_index(1) do |anime, i|
       puts "#{i}. #{anime.title}"
     end
     

@@ -1,10 +1,10 @@
 class AnimeFinder::Genre
   attr_accessor :name
-  attr_reader :anime, :url 
+  attr_reader :anime, :url, :links
   @@all = []
   
   def initialize(name, url)
-    @name = name
+    @name = name 
     @url = url
     save
   end
@@ -19,7 +19,8 @@ class AnimeFinder::Genre
     @@all
   end
   
-  def add_anime_title
+  def add_links(link)
+    self.links 
     anime.genre = self
   end
   
