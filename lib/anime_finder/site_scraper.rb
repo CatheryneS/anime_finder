@@ -20,7 +20,6 @@ class AnimeFinder::Scraper
       title = link.text 
       detail_page = link.attribute('href').value
       AnimeFinder::Links.new(title, genre.url, detail_page)
-      AnimeFinder::Genre.add_detail_page(detail_page)
     end
   end
   
