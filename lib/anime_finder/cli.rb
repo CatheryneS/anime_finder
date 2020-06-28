@@ -1,7 +1,7 @@
 class AnimeFinder::CLI 
   
   def call
-    puts "\nLet's find you an anime to watch!\n"
+    puts "\nLet's find you an anime to watch!\n".colorize(:blue)
     menu
   end
   
@@ -20,9 +20,9 @@ class AnimeFinder::CLI
       when "animes"
         all_animes
       when "exit"
-        puts "Enjoy your binge watching! See you in 72 hours."
+        puts "Enjoy your binge watching! See you in 72 hours.".colorize(:cyan)
       else 
-        puts "\nMaster-sama, I don't know that action. Please try again.\n"
+        puts "\nMaster-sama, I don't know that action. Please try again.\n".colorize(:yellow)
       end
     end
   end
@@ -33,7 +33,7 @@ class AnimeFinder::CLI
   
   def list_genres
     genres.each.with_index(1) {|g, i| puts "#{i}. #{g.name}"}
-    puts "\nEnter the number of the genre you're interested in?\n"
+    puts "\nEnter the number of the genre you're interested in?".colorize(:green)
     genre_selection
   end
   
@@ -42,8 +42,8 @@ class AnimeFinder::CLI
     if input_check(selection) == true 
       animes_based_on_genre(selection)
     else
+      puts "Hhmm..I can't seem to find that.Enter a number from the list please.".colorize(:yellow)
       list_genres
-      puts "Hhmm..I can't seem to find that.Enter a number from the list please."
     end
   end
   
@@ -57,10 +57,10 @@ class AnimeFinder::CLI
   
   def all_animes
     if animes.empty?
-      puts "\nNo viewing history.\n"
+      puts "\nNo viewing history.\n".colorize(:red)
     else
-      puts "\nPerviously viewed titles.\n"
-      animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
+      puts "\nPerviously viewed titles.\n".colorize(:light_green)
+      animes.each.with_index(1) {|animes, i| puts "#{i}.".colorize(:green) + "#{animes.title}"}
     end
   end
   
@@ -74,7 +74,7 @@ class AnimeFinder::CLI
       puts "#{i}. #{anime.title}"
     end
     
-    puts "\nEnter the number for the anime you want to know more:\n"
+    puts "\nEnter the number for the anime you want to know more:".colorize(:green)
     anime_selection
   end
   
@@ -83,7 +83,7 @@ class AnimeFinder::CLI
     if selection.to_i <= AnimeFinder::Links.all.length && selection.to_i > 0
       anime_details(selection)
     else
-      puts "I don't that number. Enter a number from the list."
+      puts "I don't know that number. Enter a number from the list.".colorize(:yellow)
       anime_selection
     end
   end
@@ -94,10 +94,10 @@ class AnimeFinder::CLI
     details = AnimeFinder::Scraper.get_details(anime)
 
     details.each do |d| 
-      puts "Title: #{d.title}"
-      puts "Genres/Season: #{d.genre}"
-      puts "Synopsis: #{d.synopsis}"
-      puts "To watch: #{d.detail_page}"
+      puts "\nTitle:".colorize(:blue) + "#{d.title}"
+      puts "Genres:".colorize(:blue) + "#{d.genre}"
+      puts "Synopsis:".colorize(:blue) + "#{d.synopsis}"
+      puts "\nWatch:".colorize(:blue) + "#{d.detail_page}"
     end
   end
 end

@@ -8,6 +8,7 @@ require_relative "./anime_finder/anime_links"
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'
 
 module AnimeFinder
   class Error < StandardError; end
