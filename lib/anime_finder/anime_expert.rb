@@ -17,13 +17,4 @@ class AnimeFinder::Anime
   def self.all
     @@all
   end
-  
-  # def add_genre(genre)
-  #   genre.anime = self 
-  # end
-  
-  # def genre 
-  #   #returns genres the anime belongs to 
-  #   AnimeFinder::Genre.all.select {|genre| genre.anime == self}
-  # end
 end

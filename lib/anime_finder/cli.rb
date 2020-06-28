@@ -5,17 +5,6 @@ class AnimeFinder::CLI
     menu
   end
   
-  def exit_plan
-    puts "\nType 'exit' to leave.\n" 
-    input = gets.strip.downcase
-    if input == 'exit'
-      menu
-    else
-      puts "\nI cannot let you leave. Try a different answer.\n"
-      exit_plan
-    end
-  end
-  
   def menu
     input = ""
     
@@ -73,7 +62,6 @@ class AnimeFinder::CLI
     else
       puts "\nPerviously viewed titles.\n"
       animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
-      exit_plan
     end
   end
   
@@ -82,12 +70,11 @@ class AnimeFinder::CLI
   end
   
   def animes_based_on_genre(input)
-    # lists the animes based on input from list_genres 
-    # binding.pry
+    
     genre = genres[input.to_i - 1]
-    # binding.pry
+    
     list = AnimeFinder::Scraper.scrape_animes(genre)
-    # binding.pry
+    
     list.each.with_index(1) do |anime, i|
       puts "#{i}. #{anime.title}"
     end
@@ -107,15 +94,10 @@ class AnimeFinder::CLI
   end
   
   def anime_details(input)
-    #displays the description, title, genre, episodes, year
-    #getting from AnimeExpert class
-    #needs to know anime based on user input of a number / how to get it to be based off name
-    # binding.pry
     anime = AnimeFinder::Links.all[input.to_i - 1]
     details = AnimeFinder::Scraper.get_details(anime)
-    # binding.pry
+
     details.each do |d| 
-      # binding.pry
       puts "Title: #{d.title}"
       puts "Genres/Season: #{d.genre}"
       puts "Synopsis: #{d.synopsis}"

@@ -10,39 +10,7 @@ class AnimeFinder::Scraper
       url = link.attribute('href').value
       AnimeFinder::Genre.new(name, url)
     end
-    
   end
-  
-  # def self.get_anime_list
-  #   genre_url = "https://aniwatcher.com/anime-list"
-    
-  #   page = Nokogiri::HTML(open(genre_url))
-  #   animes = page.css
-  #   urls = page.css('div.column').children.css('li').css('a').map {|link| link.attribute('href').value} #returns an array of links
-    
-  #   links = []
-    
-  #   urls.each do |link|
-  #     url = "https://aniwatcher.com" + link
-  #     links << url
-  #   end
-  #   scrape_info_page(links)
-  # end
-  
-  # def self.scrape_info_page(links)
-  #   # scrapes for anime details (title, genre, episodes, year)
-  #   #create a hash for each new anime
-    
-  #   page = Nokogiri::HTML(open(links.to_s))
-  #   details = page.css('#series')
-  #   anime_details = []
-  #   details.each do |detail|
-  #     # binding.pry
-  #     @anime = detail.search('a').map(&:text)
-  #     # anime_details << genres
-  #   end
-  #   @anime
-  # end
   
   def self.scrape_animes(genre)
     page = Nokogiri::HTML(open(genre.url))
@@ -52,6 +20,7 @@ class AnimeFinder::Scraper
       title = link.text 
       detail_page = link.attribute('href').value
       AnimeFinder::Links.new(title, genre.url, detail_page)
+      AnimeFinder::Genre.add_detail_page(detail_page)
     end
   end
   
@@ -67,7 +36,6 @@ class AnimeFinder::Scraper
       detail_page = anime.detail_page
       
       AnimeFinder::Anime.new(title, synopsis, genres, detail_page)
-    
     end
   end
   

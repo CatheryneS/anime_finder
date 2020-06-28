@@ -1,11 +1,11 @@
 class AnimeFinder::Genre
-  attr_accessor :name
-  attr_reader :anime, :url, :links
+  attr_accessor :name, :url, :links, :anime
   @@all = []
   
   def initialize(name, url)
     @name = name 
     @url = url
+    @anime = []
     save
   end
   
@@ -18,19 +18,4 @@ class AnimeFinder::Genre
     AnimeFinder::Scraper.scrape_genre_list(url) if @@all.empty?
     @@all
   end
-  
-  def add_links(link)
-    self.links 
-    anime.genre = self
-  end
-  
-  # def anime
-  #   #returns animes that belong to the genre
-  #   # AnimeFinder::AnimeExpert.all.select {|anime| anime.genre ==self}
-  # end
-  
-  # will know everything about genres 
-  # has a 'has many' relationship with AnimeExpert (anime has many genres)
-  # belongs to relationship w/AnimeExpert (anime belongs to genres)
-  
 end
