@@ -1,8 +1,7 @@
 # AnimeFinder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/anime_finder`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to your Anime Finder! With this gem you will be able to search animes based on genres. Once you find an anime title you're
+interested in, select it to display the summary, other genres it belongs to, and a link to where you can watch it/get more details.
 
 ## Installation
 
@@ -22,7 +21,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Select a genre from an outputed list.
+A list of related animes will be listed.
+Select an anime to display more details.
+Start over with a new genre or go back to the anime list.
+At the end you see all of the Anime you have viewed more details about by typing 'anime'.
 
 ## Development
 
