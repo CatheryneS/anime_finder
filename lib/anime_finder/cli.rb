@@ -10,7 +10,7 @@ class AnimeFinder::CLI
     
     until input == "exit"
     puts "\nTo search by genre, enter 'genres'.\n"
-    puts "To show a list of animes, enter 'animes'."
+    puts "To show the titles of animes you've searched already, enter 'animes'."
     puts "Type 'exit' to abandon me."
     input = gets.strip.downcase
     
@@ -56,10 +56,10 @@ class AnimeFinder::CLI
   end
   
   def all_animes
-    # @animes = AnimeFinder::Anime.all
-    puts "\nEnter number of anime to list of show details.\n"
+    puts "\nPerviously viewed titles.\n"
     animes.each.with_index(1) {|animes, i| puts "#{i}.#{animes.title}"}
     input = gets.strip
+      
   end
   
   def links
@@ -95,9 +95,16 @@ class AnimeFinder::CLI
     #displays the description, title, genre, episodes, year
     #getting from AnimeExpert class
     #needs to know anime based on user input of a number / how to get it to be based off name
-    anime = @animes[input.to_i - 1]
-
-    AnimeFinder::Scraper.get_details(anime)
-    puts "Trying to load details"
+    # binding.pry
+    anime = AnimeFinder::Links.all[input.to_i - 1]
+    details = AnimeFinder::Scraper.get_details(anime)
+    # binding.pry
+    details.each do |d| 
+      # binding.pry
+      puts "Title: #{d.title}"
+      puts "Genres: #{d.genre}"
+      puts "Synopsis: #{d.synopsis}"
+      puts "To watch: #{d.detail_page}"
+    end
   end
 end

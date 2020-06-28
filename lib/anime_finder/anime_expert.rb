@@ -1,11 +1,12 @@
 class AnimeFinder::Anime
-  attr_accessor :genre, :synopsis
-  attr_accessor :title, :genre_url, :detail_page
+  attr_reader :genre, :synopsis, :links, :title, :genre_url, :detail_page
   @@all = []
   
-  def initialize(title, detail_page)
+  def initialize(title, synopsis, genre, detail_page)
     @title = title
-    @detail_page =detail_page
+    @synopsis =synopsis
+    @genre = genre
+    @detail_page = detail_page
     save
   end
   

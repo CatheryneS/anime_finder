@@ -60,21 +60,15 @@ class AnimeFinder::Scraper
     details = page.css('div.animeDetail-top')
     
     details.collect do |detail|
-      binding.pry
   
       synopsis = detail.css('p.anime-details').text.strip
-      # genres = detail.css('div:nth-child(2) > a').map(&:text)
-      # title = anime.title
-      # detail_page = anime.detail_page
+      genres = detail.css('div:nth-child(2) > a').map(&:text)
+      title = anime.title
+      detail_page = anime.detail_page
       
-      AnimeFinder::Anime.add
-      binding.pry
-      
-      
-      anime.anime << anime_info
-      binding.pry
+      AnimeFinder::Anime.new(title, synopsis, genres, detail_page)
+    
     end
-
   end
   
 end
