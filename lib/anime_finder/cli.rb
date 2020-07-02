@@ -80,7 +80,7 @@ class AnimeFinder::CLI
   
   def anime_selection
     selection = gets.strip
-    if selection.to_i <= AnimeFinder::Links.all.length && selection.to_i > 0
+    if selection.to_i <= animes.length && selection.to_i > 0
       anime_details(selection)
     else
       puts "I don't know that number. Enter a number from the list.".colorize(:yellow)
@@ -90,14 +90,17 @@ class AnimeFinder::CLI
   
   
   def anime_details(input)
-    anime = AnimeFinder::Links.all[input.to_i - 1]
+
+    anime = animes[input.to_i - 1]
+    binding.pry
     details = AnimeFinder::Scraper.get_details(anime)
 
-    details.each do |d| 
-      puts "\nTitle:".colorize(:blue) + "#{d.title}"
-      puts "Genres:".colorize(:blue) + "#{d.genre}"
-      puts "Synopsis:".colorize(:blue) + "#{d.synopsis}"
-      puts "\nWatch:".colorize(:blue) + "#{d.detail_page}"
-    end
+    # details.each do |d| 
+      # binding.pry
+      puts "\nTitle:".colorize(:blue) + "#{anime.title}"
+      puts "Genres:".colorize(:blue) + "#{anime.genre}"
+      puts "Synopsis:".colorize(:blue) + "#{anime.synopsis}"
+      puts "\nWatch:".colorize(:blue) + "#{anime.detail_page}"
+    # end
   end
 end

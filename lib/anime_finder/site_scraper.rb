@@ -15,11 +15,14 @@ class AnimeFinder::Scraper
   def self.scrape_animes(genre)
     page = Nokogiri::HTML(open(genre.url))
     animes = page.css('.blb-title')
-    
+
     animes.map do |link|
       title = link.text 
       detail_page = link.attribute('href').value
-      AnimeFinder::Links.new(title, genre.url, detail_page)
+      # binding.pry
+      AnimeFinder::Anime.new(title, detail_page)
+      # AnimeFinder::Links.new(title, genre.url, detail_page)
+      # binding.pry
     end
   end
   
@@ -29,12 +32,17 @@ class AnimeFinder::Scraper
     
     details.collect do |detail|
   
-      synopsis = detail.css('p.anime-details').text.strip
+      summary = detail.css('p.anime-details').text.strip
       genres = detail.css('div:nth-child(2) > a').map(&:text)
       title = anime.title
       detail_page = anime.detail_page
+
+      anime.genre << genres
+      anime.synopsis << summary
+      # binding.pry
+      # anime.add_details(genres)
+      # AnimeFinder::Anime.new(title, synopsis, genres, detail_page)
       
-      AnimeFinder::Anime.new(title, synopsis, genres, detail_page)
     end
   end
   
