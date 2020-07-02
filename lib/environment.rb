@@ -3,7 +3,7 @@ require_relative "./anime_finder/cli"
 require_relative "./anime_finder/anime_expert"
 require_relative "./anime_finder/genre_expert"
 require_relative "./anime_finder/site_scraper"
-require_relative "./anime_finder/anime_links"
+# require_relative "./anime_finder/anime_links"
 
 require 'pry'
 require 'nokogiri'

@@ -92,15 +92,16 @@ class AnimeFinder::CLI
   def anime_details(input)
 
     anime = animes[input.to_i - 1]
-    binding.pry
+    # binding.pry
     details = AnimeFinder::Scraper.get_details(anime)
 
     # details.each do |d| 
       # binding.pry
       puts "\nTitle:".colorize(:blue) + "#{anime.title}"
-      puts "Genres:".colorize(:blue) + "#{anime.genre}"
+      puts "Genres or Season Aired:".colorize(:blue) + "#{anime.genre}"
       puts "Synopsis:".colorize(:blue) + "#{anime.synopsis}"
       puts "\nWatch:".colorize(:blue) + "#{anime.detail_page}"
     # end
+    animes.clear
   end
 end
