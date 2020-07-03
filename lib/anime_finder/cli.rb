@@ -56,11 +56,11 @@ class AnimeFinder::CLI
   end
   
   def all_animes
-    if animes.empty?
+    if AnimeFinder::Anime.history.empty?
       puts "\nNo viewing history.\n".colorize(:red)
     else
       puts "\nPerviously viewed titles.\n".colorize(:light_green)
-      animes.each.with_index(1) {|animes, i| puts "#{i}.".colorize(:green) + "#{animes.title}"}
+      AnimeFinder::Anime.history.each.with_index(1) {|animes, i| puts "#{i}.".colorize(:green) + "#{animes.title}"}
     end
   end
   

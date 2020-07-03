@@ -40,6 +40,7 @@ class AnimeFinder::Scraper
       anime.genre << genres
       anime.synopsis << summary
       # binding.pry
+      anime.anime_history(anime)
       # anime.add_details(genres)
       # AnimeFinder::Anime.new(title, synopsis, genres, detail_page)
       
