@@ -68,7 +68,6 @@ class AnimeFinder::CLI
     
     genre = genres[input.to_i - 1]
     list = AnimeFinder::Anime.get_anime_list(genre)
-    # list = AnimeFinder::Scraper.scrape_animes(genre)
     
     list.each.with_index(1) do |anime, i|
       puts "#{i}. #{anime.title}"
@@ -93,16 +92,15 @@ class AnimeFinder::CLI
 
     anime = animes[input.to_i - 1]
     details = AnimeFinder::Anime.get_details(anime)
-    # binding.pry
-    # details = AnimeFinder::Scraper.get_details(anime)
-
-    # details.each do |d| 
-      # binding.pry
-      puts "\nTitle:".colorize(:blue) + "#{anime.title}"
-      puts "Genres or Season Aired:".colorize(:blue) + "#{anime.genre}"
-      puts "Synopsis:".colorize(:blue) + "#{anime.synopsis}"
-      puts "\nWatch:".colorize(:blue) + "#{anime.detail_page}"
-    # end
+ 
+    details.each do |d|
+      d.each do |info|
+        puts "\nTitle:".colorize(:blue) + "#{info.title}"
+        puts "Genres or Season Aired: ".colorize(:blue) + "#{info.genre}"
+        puts "Synopsis: ".colorize(:blue) + "#{info.synopsis}"
+        puts "\nWatch:".colorize(:blue) + "#{info.detail_page}"
+      end
+    end
     animes.clear
   end
 end
