@@ -35,4 +35,12 @@ class AnimeFinder::Anime
     @@anime_history
   end
 
+  def self.get_anime_list(genre)
+    AnimeFinder::Scraper.scrape_animes(genre)
+  end
+  
+  def self.get_details(anime)
+    AnimeFinder::Scraper.get_details(anime)
+  end
+
 end

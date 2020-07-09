@@ -28,7 +28,7 @@ class AnimeFinder::CLI
   end
   
   def genres
-    @genres = AnimeFinder::Genre.all
+    AnimeFinder::Genre.all
   end
   
   def list_genres
@@ -52,7 +52,7 @@ class AnimeFinder::CLI
   end
   
   def animes
-    @animes = AnimeFinder::Anime.all
+    AnimeFinder::Anime.all
   end
   
   def all_animes
@@ -67,8 +67,8 @@ class AnimeFinder::CLI
   def animes_based_on_genre(input)
     
     genre = genres[input.to_i - 1]
-    
-    list = AnimeFinder::Scraper.scrape_animes(genre)
+    list = AnimeFinder::Anime.get_anime_list(genre)
+    # list = AnimeFinder::Scraper.scrape_animes(genre)
     
     list.each.with_index(1) do |anime, i|
       puts "#{i}. #{anime.title}"
@@ -92,8 +92,9 @@ class AnimeFinder::CLI
   def anime_details(input)
 
     anime = animes[input.to_i - 1]
+    details = AnimeFinder::Anime.get_details(anime)
     # binding.pry
-    details = AnimeFinder::Scraper.get_details(anime)
+    # details = AnimeFinder::Scraper.get_details(anime)
 
     # details.each do |d| 
       # binding.pry

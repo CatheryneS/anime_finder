@@ -9,6 +9,7 @@ class AnimeFinder::Scraper
       name = link.text
       url = link.attribute('href').value
       AnimeFinder::Genre.new(name, url)
+      # binding.pry
     end
   end
   
